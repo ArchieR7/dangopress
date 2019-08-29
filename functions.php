@@ -102,7 +102,7 @@ function dangopress_setup_theme()
     register_sidebar(array(
         'name' => 'Main Sidebar',
         'id' => 'sidebar',
-        'description' => '该区域的小工具会显示在右方的侧栏中',
+        'description' => '該區域的小工具會顯示在右方的側欄中',
         'before_widget' => '<div class="widget %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h3>',
@@ -113,7 +113,7 @@ function dangopress_setup_theme()
     register_sidebar(array(
         'name' => 'Sidebar Follow',
         'id' => 'sidebar-follow',
-        'description' => '该区域的小工具会显示在右方侧栏的跟随部分中',
+        'description' => '該區域的小工具會顯示在右方側欄的跟隨部分中',
         'before_widget' => '<div class="widget %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h3>',
@@ -363,11 +363,11 @@ add_action('wp_head', 'dangopress_add_meta_robots');
         echo '<meta property="og:description" content="' . $meta_description . '"/>';
 
     global $post;
-	if (has_post_thumbnail($post->ID)) { // If the post has featured image, use it
-		$image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large');
+    if (has_post_thumbnail($post->ID)) { // If the post has featured image, use it
+        $image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large');
         $image_url = strtok($image_attributes[0], '?');
-		echo '<meta property="og:image" content="' . esc_attr($image_url) . '"/>';
-	}
+        echo '<meta property="og:image" content="' . esc_attr($image_url) . '"/>';
+    }
 }
 add_action('wp_head', 'dangopress_add_social_meta');
 
@@ -513,11 +513,11 @@ function dangopress_comments_callback($comment, $args, $depth) {
             </div>
             <div class="comment-meta">
                 <span class="comment-author<?php echo user_can($comment->user_id, 'administrator') ? ' postauthor': ''?>"><?php comment_author_link(); ?></span>
-                <span class="comment-date">发表于 <?php echo show_human_time_diff($comment->comment_date_gmt); ?></span>
+                <span class="comment-date">發表於 <?php echo show_human_time_diff($comment->comment_date_gmt); ?></span>
                 <span class="comment-reply">
                 <?php
                     comment_reply_link(array_merge($args, array(
-                        'reply_text' => '回复',
+                        'reply_text' => '回復',
                         'depth' => $depth,
                         'max_depth' => $args['max_depth']
                     )));
@@ -606,7 +606,7 @@ function dangopress_email_nodify($comment_id)
     $sender = 'no-reply@' . preg_replace('#^www.#', '', strtolower($_SERVER['SERVER_NAME']));
 
     $to = trim(get_comment($parent_id)->comment_author_email);
-    $subject = '您在 [' . get_option('blogname') . '] 的留言有了回复';
+    $subject = '您在 [' . get_option('blogname') . '] 的留言有了回復';
 
     $from = 'From: "' . get_option('blogname') . '" <' . $sender . '>';
     $headers = "$from\nContent-Type: text/html; charset=" . get_option('blog_charset') . "\n";
@@ -616,14 +616,14 @@ function dangopress_email_nodify($comment_id)
     $message .= '<p style="color:#000">您曾在《' . get_the_title($comment->comment_post_ID) . '》的留言: </p>';
     $message .= '<blockquote style="background:#fafafa;border-left:1px solid #ddd;padding:10px;margin:15px 0;">';
     $message .= trim(get_comment($parent_id)->comment_content) . '</blockquote>';
-    $message .= '<p style="color:#000">收到来自 <strong>' . trim($comment->comment_author) . '</strong> 给您的回复:</p>';
+    $message .= '<p style="color:#000">收到來自 <strong>' . trim($comment->comment_author) . '</strong> 給您的回復:</p>';
     $message .= '<blockquote style="background:#fafafa;border-left:1px solid #ddd;padding:10px;margin:15px 0;">';
     $message .= trim($comment->comment_content) . '</blockquote>';
-    $message .= '<p style="color:#000">您可以点击以下链接（或者复制链接到地址栏访问）查看回复的完整内容:</p>';
+    $message .= '<p style="color:#000">您可以點擊以下鏈接（或者複製鏈接到地址欄訪問）查看回復的完整內容:</p>';
     $message .= '<blockquote style="background:#fafafa;border-left:1px solid #ddd;padding:10px;margin:15px 0;">';
     $message .= get_comment_link($comment) . '</blockquote>';
-    $message .= '<p style="color:#000">欢迎再次光临 <a href="' . home_url() . '">' . get_bloginfo('name') . '</a></p>';
-    $message .= '<p style="color:#888;">友情提醒: 此邮件由系统自动发送，请勿回复。</p></div>';
+    $message .= '<p style="color:#000">歡迎再次光臨 <a href="' . home_url() . '">' . get_bloginfo('name') . '</a></p>';
+    $message .= '<p style="color:#888;">友情提醒: 此郵件由系統自動發送，請勿回復。</p></div>';
 
     wp_mail($to, $subject, $message, $headers);
 }
@@ -638,13 +638,13 @@ add_action('comment_post', 'dangopress_email_nodify');
 function dangopress_breadcrumb()
 {
     /* === OPTIONS === */
-    $text['home']     = '首页'; // text for the 'Home' link
+    $text['home']     = '首頁'; // text for the 'Home' link
     $text['category'] = '%s'; // text for a category page
-    $text['search']   = '"%s" 的搜索结果'; // text for a search results page
-    $text['tag']      = '含标签 "%s" 的文章'; // text for a tag page
-    $text['404']      = '页面未找到'; // text for the 404 page
-    $text['page']     = '第 %s 页'; // text 'Page N'
-    $text['cpage']    = '第 %s 页'; // text 'Comment Page N'
+    $text['search']   = '"%s" 的搜索結果'; // text for a search results page
+    $text['tag']      = '含標籤 "%s" 的文章'; // text for a tag page
+    $text['404']      = '頁面未找到'; // text for the 404 page
+    $text['page']     = '第 %s 頁'; // text 'Page N'
+    $text['cpage']    = '第 %s 頁'; // text 'Comment Page N'
 
     $prefix         = '<i class="icon-windows"></i>'; // Prefix the breadcrumb
     $wrap_before    = '<div id="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">'; // the opening wrapper tag
@@ -923,46 +923,46 @@ add_action('wp_head', 'dangopress_insert_analytics_snippets');
  */
 function insert_after_paragraph($insertion, $paragraph_id, $content)
 {
-	$closing_p = '</p>';
-	$paragraphs = explode($closing_p, $content);
+    $closing_p = '</p>';
+    $paragraphs = explode($closing_p, $content);
 
-	foreach ($paragraphs as $index => $paragraph) {
-		if (trim($paragraph)) {
-			$paragraphs[$index] .= $closing_p;
-		}
+    foreach ($paragraphs as $index => $paragraph) {
+        if (trim($paragraph)) {
+            $paragraphs[$index] .= $closing_p;
+        }
 
-		if ($paragraph_id == $index + 1) {
-			$paragraphs[$index] .= $insertion;
-		}
-	}
+        if ($paragraph_id == $index + 1) {
+            $paragraphs[$index] .= $insertion;
+        }
+    }
 
-	return implode('', $paragraphs);
+    return implode('', $paragraphs);
 }
 
 function dangopress_insert_post_ads($content)
 {
     $options = get_option('dangopress_options');
     $post_ads_code = $options['post_ads_code'];
-	
-	if (empty($post_ads_code) || !is_single()) {
-		return $content;
-	}
-	
-	$pattern = "/<p>.*?<\/p>/";
-	$paragraph_count = preg_match_all($pattern, $content);
-	
-	if ($paragraph_count <= 7) {
-		return $content;
-	}
-	
-	$idx = rand(3, $paragraph_count - 2);
-	return insert_after_paragraph($post_ads_code, $idx, $content);
-	
-// 	if (!empty($post_ads_code) && is_single() && !is_admin()) {
-// 		return insert_after_paragraph($post_ads_code, 3, $content);
-// 	}
+    
+    if (empty($post_ads_code) || !is_single()) {
+        return $content;
+    }
+    
+    $pattern = "/<p>.*?<\/p>/";
+    $paragraph_count = preg_match_all($pattern, $content);
+    
+    if ($paragraph_count <= 7) {
+        return $content;
+    }
+    
+    $idx = rand(3, $paragraph_count - 2);
+    return insert_after_paragraph($post_ads_code, $idx, $content);
+    
+//  if (!empty($post_ads_code) && is_single() && !is_admin()) {
+//      return insert_after_paragraph($post_ads_code, 3, $content);
+//  }
 
-	return $content;
+    return $content;
 }
 
 add_filter('the_content', 'dangopress_insert_post_ads');
@@ -988,12 +988,12 @@ function dangopress_category_description()
         $sub_cats = str_replace("<br />", "", $sub_cats);  // strip the <br /> tag
         $sub_cats = str_replace("\n\t", ", ", $sub_cats);  // separated by comma
 
-        $sub_cats = '<div class="sub-categories">包含子目录: ' . $sub_cats . '</div>';
+        $sub_cats = '<div class="sub-categories">包含子目錄: ' . $sub_cats . '</div>';
     }
 ?>
 
     <div id="category-panel" class="">
-        <h2><?php echo $cat_name; ?> 类目</h2>
+        <h2><?php echo $cat_name; ?> 類目</h2>
         <?php echo $description; ?>
         <?php echo $sub_cats; ?>
     </div>
@@ -1012,10 +1012,10 @@ function dangopress_add_quicktags()
 ?>
 
     <script type="text/javascript">
-    QTags.addButton('eg_h3', 'h3', '<h3>', '</h3>', '', '三级标题', 101);
-    QTags.addButton('eg_h4', 'h4', '<h4>', '</h4>', '', '四级标题', 102);
+    QTags.addButton('eg_h3', 'h3', '<h3>', '</h3>', '', '三級標題', 101);
+    QTags.addButton('eg_h4', 'h4', '<h4>', '</h4>', '', '四級標題', 102);
     QTags.addButton('eg_pre', 'pre', '<pre>', '</pre>', '', '', 111);
-    QTags.addButton('eg_prettify', 'prettify', '<pre class="prettyprint">', '</pre>', '', '代码高亮', 112);
+    QTags.addButton('eg_prettify', 'prettify', '<pre class="prettyprint">', '</pre>', '', '代碼高亮', 112);
     </script>
 
 <?php
@@ -1128,7 +1128,7 @@ function dangopress_show_sitemap() {
    $sitemap = $options['sitemap_xml'];
 
    if (!empty($sitemap)) {
-       $link = '<span class="sitemap"><a href="' . home_url() . '/' . $sitemap . '">站点地图<i class="icon-sitemap"></i></a></span>';
+       $link = '<span class="sitemap"><a href="' . home_url() . '/' . $sitemap . '">站點地圖<i class="icon-sitemap"></i></a></span>';
 
        if (!is_home()) {
            $link = dangopress_nofollow_link($link);

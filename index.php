@@ -28,7 +28,7 @@ if (have_posts()): while (have_posts()): the_post();
                 <span class="views"><i class="icon-eye"></i><?php the_user_views(); ?></span>
             <?php endif; ?>
             <span class="entry-comment">
-                <i class="icon-comment"></i><?php comments_popup_link('抢沙发', '1 个评论', '% 个评论', 'comments-link'); ?>
+                <i class="icon-comment"></i><?php comments_popup_link('搶沙發', '1 個評論', '% 個評論', 'comments-link'); ?>
            </span>
         </div>
         <div class="entry-content"><?php the_content('查看全文'); ?></div>
@@ -37,7 +37,7 @@ if (have_posts()): while (have_posts()): the_post();
 <?php endwhile; else: ?>
 
     <article>
-        <h2 class="entry-title">没有找到相关的文章, 也许你对以下文章感兴趣</h2>
+        <h2 class="entry-title">沒有找到相關的文章, 也許你對以下文章感興趣</h2>
         <div class="entry-content">
             <ul>
                 <?php

@@ -9,7 +9,7 @@ Author: mitcho (Michael Yoshitaka Erlewine)
 
 <div class="clearfix related-posts">
     <div class="caption">
-        <i class="icon-tags"></i> 与<h2><?php the_tags(' ', ' ', ' '); ?></h2>相关的文章
+        <i class="icon-tags"></i> 與<h2><?php the_tags(' ', ' ', ' '); ?></h2>相關的文章
     </div>
 <?php
     echo '<ul itemscope itemtype="http://schema.org/WebPage">';
@@ -28,7 +28,7 @@ Author: mitcho (Michael Yoshitaka Erlewine)
             the_post();
 
             echo '<li><a itemprop="relatedLink" href="' . get_permalink() . '" rel="bookmark">' . get_the_title() . '</a>';
-            echo '<span>' . get_comments_number() . ' 次评论</span></li>';
+            echo '<span>' . get_comments_number() . ' 次評論</span></li>';
         }
     }
 ?>

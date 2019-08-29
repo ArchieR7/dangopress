@@ -20,8 +20,8 @@ get_header();?>
         <div class="entry-copyright">
             <p>
                 <i class="icon-info-circle"></i>
-                转载请注明转自: <a href="<?php echo esc_url(home_url()); ?>"><?php bloginfo('name'); ?></a>
-                , 本文固定链接:
+                轉載請注明轉自: <a href="<?php echo esc_url(home_url()); ?>"><?php bloginfo('name'); ?></a>
+                , 本文固定鏈接:
                 <a rel="shortlink" href="<?php echo wp_get_shortlink(); ?>"><?php the_title(); ?></a>
             </p>
         </div>
@@ -40,7 +40,7 @@ get_header();?>
                         <a rel="prev" href="<?php echo get_permalink($prev_post->ID); ?>"><?php echo $prev_post->post_title; ?></a>
                 <?php
                     } else {
-                        echo '<a href="javascript:void(0);">已经是最新一篇文章</a>';
+                        echo '<a href="javascript:void(0);">已經是最新一篇文章</a>';
                     }
                 ?>
             </div>
@@ -53,7 +53,7 @@ get_header();?>
                         <a rel="prev" href="<?php echo get_permalink($next_post->ID); ?>"><?php echo $next_post->post_title; ?></a>
                 <?php
                     } else {
-                        echo '<a href="javascript:void(0);">已经是最后一篇文章</a>';
+                        echo '<a href="javascript:void(0);">已經是最後一篇文章</a>';
                     }
                 ?>
             </div>

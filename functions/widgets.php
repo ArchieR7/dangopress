@@ -17,10 +17,10 @@ function dangopress_get_recent_posts($post_num = 10, $chars = 30)
         $title_attr = esc_attr(strip_tags($title));
         $human_time = show_human_time_diff($post['post_date_gmt']);
 
-        $link = '<a href="' . $permalink. '" rel="bookmark" title="详细阅读《' . $title_attr . '》">';
+        $link = '<a href="' . $permalink. '" rel="bookmark" title="詳細閱讀《' . $title_attr . '》">';
         $link .= wp_trim_words($title, $chars) . '</a>';
 
-        $output .= '<li>' . $link . '<small>发表于 ' . $human_time . '</small></li>';
+        $output .= '<li>' . $link . '<small>發表於 ' . $human_time . '</small></li>';
     }
 
     return $output;
@@ -40,10 +40,10 @@ function dangopress_get_rand_posts($post_num = 10, $chars = 30)
         $title_attr = esc_attr(strip_tags($title));
         $human_time = show_human_time_diff($post->post_date_gmt);
 
-        $link = '<a href="' . $permalink. '" rel="bookmark" title="随机阅读《' . $title_attr . '》">';
+        $link = '<a href="' . $permalink. '" rel="bookmark" title="隨機閱讀《' . $title_attr . '》">';
         $link .= wp_trim_words($title, $chars) . '</a>';
 
-        $output .= '<li>' . $link . '<small>发表于 ' . $human_time . '</small></li>';
+        $output .= '<li>' . $link . '<small>發表於 ' . $human_time . '</small></li>';
     }
 
     return $output;
@@ -69,10 +69,10 @@ function dangopress_get_sticky_posts($posts_num = 10, $chars = 30)
         $title_attr = esc_attr(strip_tags($title));
         $human_time = show_human_time_diff($post->post_modified_gmt);
 
-        $link = '<a href="' . $permalink. '" rel="bookmark" title="推荐阅读《' . $title_attr . '》">';
+        $link = '<a href="' . $permalink. '" rel="bookmark" title="推薦閱讀《' . $title_attr . '》">';
         $link .= wp_trim_words($title, $chars) . '</a>';
 
-        $output .= '<li>' . $link . '<small>最经更新于 ' . $human_time . '</small></li>';
+        $output .= '<li>' . $link . '<small>最經更新於 ' . $human_time . '</small></li>';
     }
 
     return $output;
@@ -100,10 +100,10 @@ function dangopress_get_most_commented($posts_num = 10, $chars = 30, $days = 180
         $title_attr = esc_attr(strip_tags($title));
         $comment_num = $post->comment_count;
 
-        $link = '<a href="' . $permalink. '" rel="bookmark" title="详细阅读《' . $title_attr . '》">';
+        $link = '<a href="' . $permalink. '" rel="bookmark" title="詳細閱讀《' . $title_attr . '》">';
         $link .= wp_trim_words($title, $chars) . '</a>';
 
-        $output .= '<li>' . $link . '<small>共 ' . $comment_num . ' 条评论</small></li>';
+        $output .= '<li>' . $link . '<small>共 ' . $comment_num . ' 條評論</small></li>';
     }
 
     return $output;
@@ -120,7 +120,7 @@ class Dangopress_PostsTabber_Widget extends WP_Widget {
     {
         $widget_opts = array(
             'classname' => 'widget-tabber',     // widget classname
-            'description' => '多个维度显示文章列表'   // widget description
+            'description' => '多個維度顯示文章列表'   // widget description
         );
 
         parent::__construct(
@@ -174,9 +174,9 @@ class Dangopress_PostsTabber_Widget extends WP_Widget {
 
         // Show posts tabber title
         $output .= '<div class="tabber-title"><ul class="tabnav four clearfix">';
-        $output .= '<li class="selected">' . $before_title . '置顶' . "$after_title</li>";
-        $output .= '<li class="">' . $before_title . '热评' . "$after_title</li>";
-        $output .= '<li class="">' . $before_title . '随机' . "$after_title</li>";
+        $output .= '<li class="selected">' . $before_title . '置頂' . "$after_title</li>";
+        $output .= '<li class="">' . $before_title . '熱評' . "$after_title</li>";
+        $output .= '<li class="">' . $before_title . '隨機' . "$after_title</li>";
         $output .= '<li class="">' . $before_title . '最新' . "$after_title</li>";
         $output .= '</ul></div>';
 
@@ -227,13 +227,13 @@ class Dangopress_PostsTabber_Widget extends WP_Widget {
         $number = isset($instance['number']) ? absint($instance['number']) : 6;
         $chars = isset($instance['chars']) ? absint($instance['chars']) : 30;
 ?>
-        <p><label for="<?php echo $this->get_field_id('number'); ?>">显示文章数量: </label>
+        <p><label for="<?php echo $this->get_field_id('number'); ?>">顯示文章數量: </label>
         <input class="widefat" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" /></p>
-        <p><label for="<?php echo $this->get_field_id('chars'); ?>">标题显示字数限制: </label>
+        <p><label for="<?php echo $this->get_field_id('chars'); ?>">標題顯示字數限制: </label>
         <input class="widefat" id="<?php echo $this->get_field_id('chars'); ?>" name="<?php echo $this->get_field_name('chars'); ?>" type="text" value="<?php echo $chars; ?>" /></p>
         <p>
         <input class="checkbox" type="checkbox" <?php checked($instance['show_in_home'], true); ?> id="<?php echo $this->get_field_id('show_in_home'); ?>" name="<?php echo $this->get_field_name('show_in_home'); ?>" />
-        <label for="<?php echo $this->get_field_id('show_in_home'); ?>">仅在首页显示</label>
+        <label for="<?php echo $this->get_field_id('show_in_home'); ?>">僅在首頁顯示</label>
         </p>
 <?php
     }
@@ -250,12 +250,12 @@ class Dangopress_RecentComments_Widget extends WP_Widget {
     {
         $widget_opts = array(
             'classname' => 'widget-recent-comments',  // widget classname
-            'description' => '显示最近 N 个评论'      // widget description
+            'description' => '顯示最近 N 個評論'      // widget description
         );
 
         parent::__construct(
             'dangopress_recentcomments', // widget base id
-            '最新评论 [dangopress]',     // widget name
+            '最新評論 [dangopress]',     // widget name
             $widget_opts                 // widget options
         );
 
@@ -315,7 +315,7 @@ class Dangopress_RecentComments_Widget extends WP_Widget {
         $output = "";
 
         // Get the widget title
-        $title = (!empty($instance['title'])) ? $instance['title'] : '最新评论';
+        $title = (!empty($instance['title'])) ? $instance['title'] : '最新評論';
         $title = apply_filters('widget_title', $title, $instance, $this->id_base);
 
         // Get the number of comments
@@ -365,7 +365,7 @@ class Dangopress_RecentComments_Widget extends WP_Widget {
 
                 $output .= '<li class="clearfix rc_item">' . $avatar;
                 $output .= '<div class="rc_info">';
-                $output .= '<a href="' . $comment_link . '" title="《' . $comment->post_title . '》上的评论">';
+                $output .= '<a href="' . $comment_link . '" title="《' . $comment->post_title . '》上的評論">';
                 $output .= '<span class="rc_name">' . strip_tags($comment->comment_author) . '</span></a>';
                 $output .= '<span class="rc_time">' . $time_diff . '</span>';
                 $output .= '<p class="rc_com">' . strip_tags($comment->com_excerpt) . '</p>';
@@ -391,15 +391,15 @@ class Dangopress_RecentComments_Widget extends WP_Widget {
         $number = isset($instance['number']) ? absint($instance['number']) : 8;
         $chars = isset($instance['chars']) ? absint($instance['chars']) : 25;
 ?>
-        <p><label for="<?php echo $this->get_field_id('title'); ?>">标题: </label>
+        <p><label for="<?php echo $this->get_field_id('title'); ?>">標題: </label>
         <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
-        <p><label for="<?php echo $this->get_field_id('number'); ?>">显示评论数量: </label>
+        <p><label for="<?php echo $this->get_field_id('number'); ?>">顯示評論數量: </label>
         <input class="widefat" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" /></p>
-        <p><label for="<?php echo $this->get_field_id('chars'); ?>">评论显示字数限制: </label>
+        <p><label for="<?php echo $this->get_field_id('chars'); ?>">評論顯示字數限制: </label>
         <input class="widefat" id="<?php echo $this->get_field_id('chars'); ?>" name="<?php echo $this->get_field_name('chars'); ?>" type="text" value="<?php echo $chars; ?>" /></p>
         <p>
         <input class="checkbox" type="checkbox" <?php checked($instance['show_in_home'], true); ?> id="<?php echo $this->get_field_id('show_in_home'); ?>" name="<?php echo $this->get_field_name('show_in_home'); ?>" />
-        <label for="<?php echo $this->get_field_id('show_in_home'); ?>">仅在首页显示</label>
+        <label for="<?php echo $this->get_field_id('show_in_home'); ?>">僅在首頁顯示</label>
         </p>
 <?php
     }
@@ -416,12 +416,12 @@ class Dangopress_Links_Widget extends WP_Widget {
     {
         $widget_opts = array(
             'classname' => 'widget-links',              // widget classname
-            'description' => '显示自定义链接菜单'       // widget description
+            'description' => '顯示自定義鏈接菜單'       // widget description
         );
 
         parent::__construct(
             'dangopress_links',              // widget base id
-            '自定义链接菜单 [dangopress]',   // widget name
+            '自定義鏈接菜單 [dangopress]',   // widget name
             $widget_opts                     // widget options
         );
     }
@@ -478,16 +478,16 @@ class Dangopress_Links_Widget extends WP_Widget {
 
         // If no menus exists, direct the user to go and create some.
         if (!$menus) {
-            printf('<p>请先<a href="%s">创建自定义菜单</a>, 菜单由链接组成</p>', admin_url('nav-menus.php'));
+            printf('<p>請先<a href="%s">創建自定義菜單</a>, 菜單由鏈接組成</p>', admin_url('nav-menus.php'));
             return;
         }
 ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php echo "标题:"; ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php echo "標題:"; ?></label>
             <input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('nav_menu'); ?>"><?php echo "选择菜单:"; ?></label>
+            <label for="<?php echo $this->get_field_id('nav_menu'); ?>"><?php echo "選擇菜單:"; ?></label>
             <select id="<?php echo $this->get_field_id('nav_menu'); ?>" name="<?php echo $this->get_field_name('nav_menu'); ?>">
         <?php
             foreach ( $menus as $menu ) {
@@ -500,7 +500,7 @@ class Dangopress_Links_Widget extends WP_Widget {
         </p>
         <p>
         <input class="checkbox" type="checkbox" <?php checked($instance['show_in_home'], true); ?> id="<?php echo $this->get_field_id('show_in_home'); ?>" name="<?php echo $this->get_field_name('show_in_home'); ?>" />
-        <label for="<?php echo $this->get_field_id('show_in_home'); ?>">仅在首页显示</label>
+        <label for="<?php echo $this->get_field_id('show_in_home'); ?>">僅在首頁顯示</label>
         </p>
 <?php
     }
@@ -517,12 +517,12 @@ class Dangopress_MostViewedPosts_Widget extends WP_Widget {
     {
         $widget_opts = array(
             'classname' => 'widget-most-viewed-posts',  // widget classname
-            'description' => '基于 WP PostViews Plus 插件, 显示最近一段时间内最热门的文章' // widget description
+            'description' => '基於 WP PostViews Plus 插件, 顯示最近一段時間內最熱門的文章' // widget description
         );
 
         parent::__construct(
             'dangopress_most_viewed_posts', // widget base id
-            '热门文章 [dangopress]',       // widget name
+            '熱門文章 [dangopress]',       // widget name
             $widget_opts                   // widget options
         );
 
@@ -557,13 +557,13 @@ class Dangopress_MostViewedPosts_Widget extends WP_Widget {
         $chars = isset($instance['chars']) ? absint($instance['chars']) : 45;
 ?>
 
-        <p><label for="<?php echo $this->get_field_id('title'); ?>">标题: </label>
+        <p><label for="<?php echo $this->get_field_id('title'); ?>">標題: </label>
         <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
-        <p><label for="<?php echo $this->get_field_id('number'); ?>">显示文章数量: </label>
+        <p><label for="<?php echo $this->get_field_id('number'); ?>">顯示文章數量: </label>
         <input class="widefat" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" /></p>
-        <p><label for="<?php echo $this->get_field_id('days'); ?>">最近天数: </label>
+        <p><label for="<?php echo $this->get_field_id('days'); ?>">最近天數: </label>
         <input class="widefat" id="<?php echo $this->get_field_id('days'); ?>" name="<?php echo $this->get_field_name('days'); ?>" type="text" value="<?php echo $days; ?>" /></p>
-        <p><label for="<?php echo $this->get_field_id('chars'); ?>">标题显示字数限制: </label>
+        <p><label for="<?php echo $this->get_field_id('chars'); ?>">標題顯示字數限制: </label>
         <input class="widefat" id="<?php echo $this->get_field_id('chars'); ?>" name="<?php echo $this->get_field_name('chars'); ?>" type="text" value="<?php echo $chars; ?>" /></p>
 <?php
     }
@@ -600,7 +600,7 @@ class Dangopress_MostViewedPosts_Widget extends WP_Widget {
         extract($args, EXTR_SKIP);
 
         // Get the widget title
-        $title = (!empty($instance['title'])) ? $instance['title'] : '最新评论';
+        $title = (!empty($instance['title'])) ? $instance['title'] : '最新評論';
         $title = apply_filters('widget_title', $title, $instance, $this->id_base);
 
         // Get the post number to be showed
@@ -651,12 +651,12 @@ class Dangopress_Ads_Widget extends WP_Widget {
     {
         $widget_opts = array(
             'classname' => 'widget-ads',              // widget classname
-            'description' => '显示广告单元'       // widget description
+            'description' => '顯示廣告單元'       // widget description
         );
 
         parent::__construct(
             'dangopress_ads',              // widget base id
-            '自定义广告 [dangopress]',   // widget name
+            '自定義廣告 [dangopress]',   // widget name
             $widget_opts                     // widget options
         );
     }
@@ -703,16 +703,16 @@ class Dangopress_Ads_Widget extends WP_Widget {
 
 ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php echo "标题:"; ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php echo "標題:"; ?></label>
             <input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('ads_code'); ?>"><?php echo "内容:"; ?></label>
+            <label for="<?php echo $this->get_field_id('ads_code'); ?>"><?php echo "內容:"; ?></label>
             <textarea rows="8" class="widefat" id="<?php echo $this->get_field_id('ads_code'); ?>" name="<?php echo $this->get_field_name('ads_code'); ?>"><?php echo $ads_code; ?></textarea>
         </p>
         <p>
         <input class="checkbox" type="checkbox" <?php checked($instance['show_in_home'], true); ?> id="<?php echo $this->get_field_id('show_in_home'); ?>" name="<?php echo $this->get_field_name('show_in_home'); ?>" />
-        <label for="<?php echo $this->get_field_id('show_in_home'); ?>">仅在首页显示</label>
+        <label for="<?php echo $this->get_field_id('show_in_home'); ?>">僅在首頁顯示</label>
         </p>
 <?php
     }
